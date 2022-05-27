@@ -14,9 +14,13 @@ final class BookTableViewCell: UITableViewCell {
     var likeButtonAction : EmptyClosure = {}
     var isClicked = false
     
-    private let image = UIImageView().then {
+    let image = UIImageView().then {
         $0.image = UIImage(systemName: "book")
         $0.layer.cornerRadius = 8
+        $0.contentMode = .scaleAspectFill
+        $0.clipsToBounds = true
+        $0.layer.borderWidth = 2
+        $0.layer.borderColor = UIColor.lightGray.cgColor
         $0.backgroundColor = .lightGray
     }
     
@@ -87,6 +91,7 @@ final class BookTableViewCell: UITableViewCell {
             $0.leading.equalTo(titleLabel)
             $0.top.equalTo(titleLabel.snp.bottom).offset(10)
             $0.trailing.equalTo(likeButton.snp.leading).inset(10)
+            $0.height.greaterThanOrEqualTo(image.snp.height)
             $0.bottom.equalToSuperview().inset(20)
         }
         

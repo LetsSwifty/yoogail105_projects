@@ -8,6 +8,7 @@
 import UIKit
 import Kingfisher
 
+
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -24,13 +25,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         let row = bookList[indexPath.row]
         cell.configureCell(row: row)
-        
+        let url = URL(string: row.image)
+        cell.image.kf.setImage(with: url)
         cell.likeButtonAction = {
             print("clicked")
             cell.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         }
         return cell
     }
-    
     
 }
