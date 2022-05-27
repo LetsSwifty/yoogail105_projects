@@ -10,11 +10,14 @@
 xcuserdata/
 APIKeysInfo.plist
 .DS_Store
+<<<<<<< HEAD
 Podfile
 Podfile.lock
 Pods
 
 
+=======
+>>>>>>> 6ac981a38a0de3d8b74a2021c3477bc209139600
 
 ## compatibility with Xcode 8 and earlier (ignoring not required starting Xcode 9)
 *.xcscmblueprint
