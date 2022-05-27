@@ -1,6 +1,0 @@
-framework module Pods_BookStudy {
-  umbrella header "Pods-BookStudy-umbrella.h"
-
-  export *
-  module * { export * }
-}
