@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2323536C2840CBF200AFEEB7 /* BookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2323536B2840CBF200AFEEB7 /* BookService.swift */; };
+		2323536F2840CC7C00AFEEB7 /* GeneralAPIComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2323536E2840CC7C00AFEEB7 /* GeneralAPIComponents.swift */; };
+		232353712840CCA900AFEEB7 /* APIKeysInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 232353702840CCA900AFEEB7 /* APIKeysInfo.plist */; };
+		232353732840D05A00AFEEB7 /* BookStudy++Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232353722840D05A00AFEEB7 /* BookStudy++Bundle.swift */; };
+		232353752840D49900AFEEB7 /* APIErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232353742840D49900AFEEB7 /* APIErrorMessage.swift */; };
+		232353772840D62700AFEEB7 /* BookRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232353762840D62700AFEEB7 /* BookRequest.swift */; };
+		232353792840D9F400AFEEB7 /* BookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 232353782840D9F400AFEEB7 /* BookAPI.swift */; };
 		237B38AC282C34630028FD3A /* BookStudyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B38AB282C34630028FD3A /* BookStudyUITests.swift */; };
 		237B38AE282C34630028FD3A /* BookStudyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B38AD282C34630028FD3A /* BookStudyUITestsLaunchTests.swift */; };
 		237B38BB282C346A0028FD3A /* BookStudyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237B38BA282C346A0028FD3A /* BookStudyTests.swift */; };
@@ -42,6 +49,13 @@
 
 /* Begin PBXFileReference section */
 		09F2D563AD5DCFD5AF2F1C43 /* Pods-BookStudy.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookStudy.debug.xcconfig"; path = "Target Support Files/Pods-BookStudy/Pods-BookStudy.debug.xcconfig"; sourceTree = "<group>"; };
+		2323536B2840CBF200AFEEB7 /* BookService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookService.swift; sourceTree = "<group>"; };
+		2323536E2840CC7C00AFEEB7 /* GeneralAPIComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralAPIComponents.swift; sourceTree = "<group>"; };
+		232353702840CCA900AFEEB7 /* APIKeysInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIKeysInfo.plist; sourceTree = "<group>"; };
+		232353722840D05A00AFEEB7 /* BookStudy++Bundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BookStudy++Bundle.swift"; sourceTree = "<group>"; };
+		232353742840D49900AFEEB7 /* APIErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIErrorMessage.swift; sourceTree = "<group>"; };
+		232353762840D62700AFEEB7 /* BookRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookRequest.swift; sourceTree = "<group>"; };
+		232353782840D9F400AFEEB7 /* BookAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookAPI.swift; sourceTree = "<group>"; };
 		237B38A9282C34630028FD3A /* BookStudyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BookStudyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		237B38AB282C34630028FD3A /* BookStudyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookStudyUITests.swift; sourceTree = "<group>"; };
 		237B38AD282C34630028FD3A /* BookStudyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookStudyUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -95,6 +109,20 @@
 				B446F9BF56BD290D07B445C6 /* Pods_BookStudy.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2323536D2840CC4200AFEEB7 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				2323536B2840CBF200AFEEB7 /* BookService.swift */,
+				232353782840D9F400AFEEB7 /* BookAPI.swift */,
+				232353762840D62700AFEEB7 /* BookRequest.swift */,
+				2323536E2840CC7C00AFEEB7 /* GeneralAPIComponents.swift */,
+				232353722840D05A00AFEEB7 /* BookStudy++Bundle.swift */,
+				232353702840CCA900AFEEB7 /* APIKeysInfo.plist */,
+				232353742840D49900AFEEB7 /* APIErrorMessage.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		237B38AA282C34630028FD3A /* BookStudyUITests */ = {
@@ -191,6 +219,7 @@
 		23BA27BE2826D4C70043657A /* BookStudy */ = {
 			isa = PBXGroup;
 			children = (
+				2323536D2840CC4200AFEEB7 /* API */,
 				237B38C2282C349A0028FD3A /* Controller */,
 				237B38C5282C34B40028FD3A /* Extension */,
 				237B38C4282C34AC0028FD3A /* View */,
@@ -331,6 +360,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				232353712840CCA900AFEEB7 /* APIKeysInfo.plist in Resources */,
 				23BA27CC2826D4C90043657A /* LaunchScreen.storyboard in Resources */,
 				23BA27C92826D4C90043657A /* Assets.xcassets in Resources */,
 			);
@@ -403,13 +433,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				23BA27C42826D4C70043657A /* ViewController.swift in Sources */,
+				232353792840D9F400AFEEB7 /* BookAPI.swift in Sources */,
+				232353752840D49900AFEEB7 /* APIErrorMessage.swift in Sources */,
 				23BA27D42826D5010043657A /* MainView.swift in Sources */,
 				23BA27C02826D4C70043657A /* AppDelegate.swift in Sources */,
 				23A0823F2826E80200D7D91C /* Notification+Extension.swift in Sources */,
 				23BA27C22826D4C70043657A /* SceneDelegate.swift in Sources */,
 				23A0823D2826DB7B00D7D91C /* BookTableViewCell.swift in Sources */,
+				232353772840D62700AFEEB7 /* BookRequest.swift in Sources */,
+				232353732840D05A00AFEEB7 /* BookStudy++Bundle.swift in Sources */,
 				23A082412826EF6F00D7D91C /* BookModel.swift in Sources */,
+				2323536C2840CBF200AFEEB7 /* BookService.swift in Sources */,
 				23A0823B2826D91900D7D91C /* MyBooksViewController.swift in Sources */,
+				2323536F2840CC7C00AFEEB7 /* GeneralAPIComponents.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

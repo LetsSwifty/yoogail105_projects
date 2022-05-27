@@ -23,9 +23,21 @@ final class ViewController: UIViewController {
         mainView.tableView.dataSource = self
         setNaviBar()
         addNotification()
+        getBooksData()
 
     }
 
+    func getBooksData() {
+        let request = SearchBooksRequest(query: "swift", display: 10, start: 1, sort: "sim")
+        BookAPIService.searchBooks(param: request) { result, error in
+            guard let result = result else {
+                return
+            }
+
+            print(result.items[0].title)
+        }
+    }
+    
     func setNaviBar() {
         let myPageButton = UIBarButtonItem(title: "MyBooks >", style: .plain, target: self, action: #selector(moveMyBooks))
         myPageButton.tintColor = .black
