@@ -12,7 +12,7 @@ import Then
 class MainView: UIView {
     let tableView = UITableView().then {
         $0.rowHeight = UITableView.automaticDimension
-        $0.backgroundColor = .yellow
+        $0.backgroundColor = .white
         $0.register(BookTableViewCell.self, forCellReuseIdentifier: BookTableViewCell.identifier)
     }
     

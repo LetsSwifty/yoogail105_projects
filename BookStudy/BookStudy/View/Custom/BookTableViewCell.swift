@@ -17,7 +17,7 @@ final class BookTableViewCell: UITableViewCell {
     private let image = UIImageView().then {
         $0.image = UIImage(systemName: "book")
         $0.layer.cornerRadius = 8
-        $0.backgroundColor = .red
+        $0.backgroundColor = .lightGray
     }
     
     private let titleLabel = UILabel().then {
@@ -47,6 +47,7 @@ final class BookTableViewCell: UITableViewCell {
     
     @objc func likeButtonClicked(_ sender: UIButton) {
         likeButtonAction()
+        
     }
     
     required init?(coder: NSCoder) {
@@ -54,11 +55,19 @@ final class BookTableViewCell: UITableViewCell {
         fatalError()
     }
     
+    func configureCell(row: Book) {
+        // 태그 처리
+        
+        titleLabel.text = row.title.replacingOccurrences(of: "<b>", with: "").replacingOccurrences(of: "</b>", with: "")
+        subtitleLabel.text = row.itemDescription.replacingOccurrences(of: "<b>", with: "").replacingOccurrences(of: "</b>", with: "")
+        
+        }
+    
+    
     func addItmeToSubviews() {
         [image, titleLabel, subtitleLabel, likeButton].map {
             contentView.addSubview($0)
         }
-        
     }
     
     func setConstraints() {
