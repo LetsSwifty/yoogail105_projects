@@ -10,21 +10,27 @@ import UIKit
 final class ViewController: UIViewController {
 
     private let mainView = MainView()
-    let likeButtonClickedNotificationKey = "likeButtonClicekd"
     
+    let likeButtonClickedNotificationKey = "likeButtonClicekd"
+    var bookList: [Book] = [] {
+        didSet {
+            self.mainView.tableView.reloadData()
+        }
+    }
     override func loadView() {
         self.view = mainView
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(#function)
         view.backgroundColor = .white
+        getBooksData()
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
         setNaviBar()
         addNotification()
-        getBooksData()
-
+        
     }
 
     func getBooksData() {
@@ -34,7 +40,9 @@ final class ViewController: UIViewController {
                 return
             }
 
-            print(result.items[0].title)
+            self.bookList = result.items
+            
+            print(self.bookList)
         }
     }
     
@@ -52,27 +60,10 @@ final class ViewController: UIViewController {
     func addNotification() {
         
     }
+    
     @objc func likeButtonClicked() {
         
     }
 }
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: BookTableViewCell.identifier, for: indexPath) as? BookTableViewCell else {
-            return UITableViewCell()
-        }
-        cell.selectionStyle = .none
-        cell.likeButtonAction = {
-            print("clicked")
-            cell.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-        }
-        return cell
-    }
-    
-    
-}
+
