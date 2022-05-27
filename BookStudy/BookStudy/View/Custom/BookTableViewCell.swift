@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 typealias EmptyClosure = (() -> ())
 
 final class BookTableViewCell: UITableViewCell {
@@ -50,6 +51,12 @@ final class BookTableViewCell: UITableViewCell {
     }
     
     @objc func likeButtonClicked(_ sender: UIButton) {
+        if isClicked {
+            isClicked = false
+        } else {
+            isClicked = true
+        }
+        
         likeButtonAction()
         
     }

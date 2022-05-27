@@ -6,17 +6,22 @@
 //
 
 import UIKit
+import RealmSwift
 
 final class ViewController: UIViewController {
 
     private let mainView = MainView()
     
     let likeButtonClickedNotificationKey = "likeButtonClicekd"
+    
     var bookList: [Book] = [] {
         didSet {
             self.mainView.tableView.reloadData()
         }
     }
+    var localRealm = try! Realm()
+    var books: Results<UserBook>?
+    
     override func loadView() {
         self.view = mainView
     }
@@ -30,7 +35,7 @@ final class ViewController: UIViewController {
         mainView.tableView.dataSource = self
         setNaviBar()
         addNotification()
-        
+        fetchHeartList()
     }
 
     func getBooksData() {
@@ -44,6 +49,12 @@ final class ViewController: UIViewController {
             
             print(self.bookList)
         }
+    }
+    
+    func fetchHeartList() {
+        
+        books = localRealm.objects(UserBook.self)
+        print(books)
     }
     
     func setNaviBar() {

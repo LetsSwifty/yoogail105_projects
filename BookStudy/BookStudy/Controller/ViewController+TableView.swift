@@ -24,14 +24,29 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .none
         
         let row = bookList[indexPath.row]
+        let isbn = row.isbn
         cell.configureCell(row: row)
         let url = URL(string: row.image)
         cell.image.kf.setImage(with: url)
         cell.likeButtonAction = {
             print("clicked")
-            cell.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
-        }
-        return cell
+            
+            
+            if cell.isClicked {
+                cell.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                let book = UserBook(isbn: isbn, title: row.title, subtitle: row.itemDescription, image: row.image)
+                try! self.localRealm.write {
+                    self.localRealm.add(book)
+                }
+            }else{
+                cell.likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+                let book = self.localRealm.objects(UserBook.self).filter("isbn == isbn")
+                try! self.localRealm.write{
+                    self.localRealm.delete(book)
+                }
+            }
     }
-    
+    return cell
+}
+
 }
