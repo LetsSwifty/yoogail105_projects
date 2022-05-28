@@ -28,6 +28,7 @@ class MyBooksViewController: UIViewController {
         mainView.tableView.delegate = self
         mainView.tableView.dataSource = self
         fetchHeartList()
+        setNaviBar()
     
     }
     
@@ -35,4 +36,13 @@ class MyBooksViewController: UIViewController {
         myBooks = localRealm.objects(UserBook.self)
     }
     
+    func setNaviBar() {
+        let backButton = UIBarButtonItem(title: "< Books ", style: .plain, target: self, action: #selector(moveBack))
+        backButton.tintColor = .black
+        self.navigationItem.leftBarButtonItem = backButton
+    }
+    
+    @objc func moveBack() {
+        navigationController?.popViewController(animated: true)
+    }
 }
