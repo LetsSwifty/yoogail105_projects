@@ -33,13 +33,13 @@ final class BookTableViewCell: UITableViewCell {
         $0.backgroundColor = .lightGray
     }
     
-    private let titleLabel = UILabel().then {
+    let titleLabel = UILabel().then {
         $0.text = "도서제목"
         $0.font = UIFont.systemFont(ofSize: 18, weight: .bold)
         $0.numberOfLines = 1
     }
     
-    private let subtitleLabel = UILabel().then {
+    let subtitleLabel = UILabel().then {
         $0.text = "도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명도서 설명"
         $0.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         $0.numberOfLines = 0

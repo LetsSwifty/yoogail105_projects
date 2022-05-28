@@ -38,7 +38,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         cell.likeButtonAction = {
             if cell.isClicked {
                 // 책 리스트에 추가
-                let book = UserBook(isbn: isbn, title: row.title, subtitle: row.itemDescription, image: row.image)
+                let book = UserBook(isbn: isbn, title: cell.titleLabel.text ?? "", subtitle: cell.subtitleLabel.text ?? "", image: row.image)
                 try! self.localRealm.write {
                     self.localRealm.add(book)
                 }
