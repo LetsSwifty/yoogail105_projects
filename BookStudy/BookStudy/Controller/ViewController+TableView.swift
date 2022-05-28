@@ -20,33 +20,36 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        
         cell.selectionStyle = .none
-        
         let row = bookList[indexPath.row]
         let isbn = row.isbn
+        // 리스트에 있는지 확인
+        let book = self.books?.filter("isbn CONTAINS [c] '\(isbn)'")
+        if book?.isEmpty == true {
+            cell.isClicked = false
+        } else {
+            cell.isClicked = true
+        }
+        
         cell.configureCell(row: row)
         let url = URL(string: row.image)
         cell.image.kf.setImage(with: url)
+        // 액션이 발생했을 때 호출
         cell.likeButtonAction = {
-            print("clicked")
-            
-            
             if cell.isClicked {
-                cell.likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+                // 책 리스트에 추가
                 let book = UserBook(isbn: isbn, title: row.title, subtitle: row.itemDescription, image: row.image)
                 try! self.localRealm.write {
                     self.localRealm.add(book)
                 }
             }else{
-                cell.likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
-                let book = self.localRealm.objects(UserBook.self).filter("isbn == isbn")
+                // 책 리스트에서 제거
                 try! self.localRealm.write{
-                    self.localRealm.delete(book)
+                    self.localRealm.delete(book!)
                 }
             }
+        }
+        return cell
     }
-    return cell
-}
-
+    
 }

@@ -52,9 +52,7 @@ final class ViewController: UIViewController {
     }
     
     func fetchHeartList() {
-        
         books = localRealm.objects(UserBook.self)
-        print(books)
     }
     
     func setNaviBar() {

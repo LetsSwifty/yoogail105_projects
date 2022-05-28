@@ -13,7 +13,15 @@ final class BookTableViewCell: UITableViewCell {
     static let identifier = "BookTableViewCell"
     
     var likeButtonAction : EmptyClosure = {}
-    var isClicked = false
+    var isClicked = false {
+        didSet {
+            if isClicked {
+                likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            } else {
+                likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            }
+        }
+    }
     
     let image = UIImageView().then {
         $0.image = UIImage(systemName: "book")
@@ -51,14 +59,17 @@ final class BookTableViewCell: UITableViewCell {
     }
     
     @objc func likeButtonClicked(_ sender: UIButton) {
+        print("클릭됨, 변경전: \(isClicked)")
         if isClicked {
             isClicked = false
+            //likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
         } else {
+           // likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
             isClicked = true
+            
         }
-        
+        print("클릭됨, 변경후: \(isClicked)")
         likeButtonAction()
-        
     }
     
     required init?(coder: NSCoder) {
@@ -68,12 +79,27 @@ final class BookTableViewCell: UITableViewCell {
     
     func configureCell(row: Book) {
         // 태그 처리
+//        if isClicked {
+//            // clicked되어있으면
+//            isClicked = false
+//            likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+//        } else {
+//            // clicked안되어있으면
+//            likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+//            isClicked = true
+//
+//        }
         
         titleLabel.text = row.title.replacingOccurrences(of: "<b>", with: "").replacingOccurrences(of: "</b>", with: "")
         subtitleLabel.text = row.itemDescription.replacingOccurrences(of: "<b>", with: "").replacingOccurrences(of: "</b>", with: "")
-        
         }
     
+    func configureMyBookCell(row: UserBook) {
+        titleLabel.text = row.title
+        subtitleLabel.text = row.subtitle
+        likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        isClicked = true
+    }
     
     func addItmeToSubviews() {
         [image, titleLabel, subtitleLabel, likeButton].map {
