@@ -20,11 +20,11 @@ extension MyBooksViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        
         cell.selectionStyle = .none
         guard let myBooks = myBooks else {
             return cell
         }
+        
         let row = myBooks[indexPath.row]
         
         let isbn = row.isbn
@@ -32,14 +32,14 @@ extension MyBooksViewController: UITableViewDelegate, UITableViewDataSource {
         let url = URL(string: row.image)
         cell.image.kf.setImage(with: url)
         cell.likeButtonAction = {
-            if cell.isClicked {
-                let book = self.localRealm.objects(UserBook.self).filter("isbn == isbn")
-                try! self.localRealm.write{
-                    self.localRealm.delete(book)
-                }
+            let book = self.myBooks?.filter("isbn CONTAINS [c] '\(isbn)'")
+            try! self.localRealm.write{
+                self.localRealm.delete(book!)
             }
+        }
+        return cell
     }
-    return cell
+   
 }
 
-}
+

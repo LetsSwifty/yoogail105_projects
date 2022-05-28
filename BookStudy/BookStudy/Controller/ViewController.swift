@@ -26,6 +26,10 @@ final class ViewController: UIViewController {
         self.view = mainView
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        mainView.tableView.reloadData()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         print(#function)

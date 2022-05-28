@@ -14,6 +14,7 @@ class MyBooksViewController: UIViewController {
     var localRealm = try! Realm()
     var myBooks: Results<UserBook>? {
         didSet {
+            print("update Mybookslist: ", myBooks)
             mainView.tableView.reloadData()
         }
     }
