@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MainViewController: UIViewController {
     
@@ -19,7 +20,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         setupNavigationBar()
         setupCollectionView()
-        viewModel.searchPhoto(keyword: "green")
+        loadImages()
     }
     
     func setupNavigationBar() {
@@ -32,15 +33,29 @@ class MainViewController: UIViewController {
         collectionView.delegate = self
     
     }
+    
+    func loadImages() {
+        viewModel.searchPhoto(keyword: "green")
+        viewModel.onErrorHandling = { result in
+            if result == "ok" {
+                self.mainView.collectionView.reloadData()
+            }
+        }
+    }
 }
 
 extension MainViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        return viewModel.ImageArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.identifier, for: indexPath) as? PhotoCollectionViewCell else { return UICollectionViewCell() }
+
+        let item = viewModel.ImageArray[indexPath.item]
+        let url = URL(string: item)
+        cell.photoView.kf.setImage(with: url)
+        
         return cell
     }
 }

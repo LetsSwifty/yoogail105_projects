@@ -8,7 +8,10 @@
 import Foundation
 
 class MainViewModel {
-    func searchPhoto(keyword: String) {
+    var onErrorHandling: ((String) -> Void)?
+    var ImageArray = [String]()
+    
+    func searchPhoto(keyword: String, _ completion: ((Result) -> Void)? = nil) {
         UnsplashAPI.shared.fetchPhoto(keyowrd: "green") { [weak self] response, error in
             
             if let error = error {
@@ -19,9 +22,11 @@ class MainViewModel {
             if let response = response {
                 print("Shop Count: ", response.total)
                 for photo in response.results {
-                    print(photo.id)
+                    self?.ImageArray.append(photo.urls.small)
                 }
             }
+            
+            self!.onErrorHandling?("ok")
         }
     }
 }

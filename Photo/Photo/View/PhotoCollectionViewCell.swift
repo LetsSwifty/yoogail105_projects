@@ -11,10 +11,11 @@ import SnapKit
 class PhotoCollectionViewCell: UICollectionViewCell {
     static let identifier = "PhotoCollectionViewCell"
     
-    private let photoView: UIImageView = {
+    var photoView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "photo")
         imageView.tintColor = .white
+        imageView.contentMode = .scaleToFill
         return imageView
     }()
     
@@ -32,8 +33,7 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         contentView.addSubview(photoView)
         
         photoView.snp.makeConstraints {
-            $0.width.height.equalTo(20)
-            $0.centerX.centerY.equalToSuperview()
+            $0.edges.equalToSuperview()
         }
     }
 }
