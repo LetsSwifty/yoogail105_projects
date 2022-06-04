@@ -20,7 +20,8 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         setupNavigationBar()
         setupCollectionView()
-        loadImages()
+        setupSearchBar()
+        loadImages(keyword: "sky")
     }
     
     func setupNavigationBar() {
@@ -31,17 +32,23 @@ class MainViewController: UIViewController {
         let collectionView = mainView.collectionView
         collectionView.dataSource = self
         collectionView.delegate = self
-    
+        collectionView.keyboardDismissMode = .onDrag
     }
     
-    func loadImages() {
-        viewModel.searchPhoto(keyword: "green")
+    func setupSearchBar() {
+        mainView.searchBar.delegate = self
+    }
+    
+    func loadImages(keyword: String) {
+        viewModel.searchPhoto(keyword: keyword)
         viewModel.onErrorHandling = { result in
             if result == "ok" {
                 self.mainView.collectionView.reloadData()
             }
         }
     }
+    
+    
 }
 
 extension MainViewController: UICollectionViewDataSource, UICollectionViewDelegate {
@@ -66,3 +73,21 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: size, height: size)
     }
 }
+
+extension MainViewController: UISearchBarDelegate {
+    private func dismissKeyboard() {
+        mainView.searchBar.resignFirstResponder()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        dismissKeyboard()
+        
+        guard let keyword = mainView.searchBar.text, keyword.isEmpty == false else {
+            return
+        }
+        
+        self.loadImages(keyword: keyword)
+    }
+}
+
+

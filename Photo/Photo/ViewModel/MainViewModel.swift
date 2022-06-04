@@ -12,7 +12,9 @@ class MainViewModel {
     var ImageArray = [String]()
     
     func searchPhoto(keyword: String, _ completion: ((Result) -> Void)? = nil) {
-        UnsplashAPI.shared.fetchPhoto(keyowrd: "green") { [weak self] response, error in
+        UnsplashAPI.shared.fetchPhoto(keyowrd: keyword) { [weak self] response, error in
+            
+            self?.ImageArray = []
             
             if let error = error {
                 print("Error:", error)

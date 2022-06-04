@@ -23,7 +23,8 @@ class MainView: UIView {
     
     let searchBar: UISearchBar = {
         let searchBar = UISearchBar()
-        searchBar.placeholder = "검색"
+        searchBar.placeholder = "검색어를 입력해 주세요."
+        searchBar.autocapitalizationType = .none
         return searchBar
     }()
     

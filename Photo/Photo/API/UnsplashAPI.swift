@@ -13,7 +13,7 @@ class UnsplashAPI {
     static let shared = UnsplashAPI()
     
     func fetchPhoto(keyowrd: String, _ completion: @escaping (Photos?, Error?) -> Void) {
-        let request = GetKeywordPhotoRequest(query: keyowrd)
+        let request = GetKeywordPhotoRequest(query: keyowrd, per_page: 30)
         AF.request(EndPoint.unsplashURL,
                    method: .get,
                    parameters: request)

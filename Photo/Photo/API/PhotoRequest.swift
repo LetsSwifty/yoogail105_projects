@@ -11,6 +11,6 @@ struct GetKeywordPhotoRequest: Codable {
     var client_id = APIKeys.UnsplashAccessKey
     var query: String
     var page: String?
-    var per_page: String?
+    var per_page: Int?
     var order_by: String?
 }
