@@ -8,19 +8,18 @@
 import Foundation
 
 struct Photos: Codable {
-    let total, totalPages: Int
+    let total: Int
     let results: [Result]
 
     enum CodingKeys: String, CodingKey {
         case total
-        case totalPages = "total_pages"
         case results
     }
 }
 
 struct Result: Codable {
     let id: String
-    let createdAt, updatedAt: Date
+    let createdAt, updatedAt: String
     let resultDescription: String?
     let urls: Urls
 

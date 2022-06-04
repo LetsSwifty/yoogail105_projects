@@ -7,6 +7,7 @@
 
 import UIKit
 import RealmSwift
+import Kingfisher
 
 final class ViewController: UIViewController {
 
@@ -43,7 +44,7 @@ final class ViewController: UIViewController {
     }
 
     func getBooksData() {
-        let request = SearchBooksRequest(query: "swift", display: 10, start: 1, sort: "sim")
+        let request = SearchBooksRequest(query: "programming", display: 100, start: 1, sort: "sim")
         BookAPIService.searchBooks(param: request) { result, error in
             guard let result = result else {
                 return
@@ -51,8 +52,19 @@ final class ViewController: UIViewController {
 
             self.bookList = result.items
             
-            print(self.bookList)
         }
+    }
+    
+    func downloadBookImages() {
+        var imageViewList = [UIImageView].self
+        for book in bookList {
+            let url = URL(string: book.image)
+            var imageView = UIImageView()
+            imageView.kf.setImage(with: url)
+        }
+        
+        
+        
     }
     
     func fetchHeartList() {

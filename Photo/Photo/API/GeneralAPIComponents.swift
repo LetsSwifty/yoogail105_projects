@@ -16,5 +16,5 @@ struct APIKeys {
 }
 
 struct EndPoint {
-    static let unsplashURL = "https://api.unsplash.com/"
+    static let unsplashURL = "https://api.unsplash.com/search/photos/"
 }

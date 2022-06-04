@@ -21,7 +21,6 @@ class UnsplashAPI {
                 switch response.result {
                 case .success(let value):
                     completion(value, nil)
-                    
                 case .failure(let error):
                     completion(nil, error)
                 }

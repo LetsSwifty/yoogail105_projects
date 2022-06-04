@@ -32,8 +32,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         cell.configureCell(row: row)
-        let url = URL(string: row.image)
-        cell.image.kf.setImage(with: url)
+        
+        DispatchQueue.main.async {
+            print("비동기 처리, \(row.title)")
+            let url = URL(string: row.image)
+            cell.image.kf.setImage(with: url)
+        }
+        
         // 액션이 발생했을 때 호출
         cell.likeButtonAction = {
             if cell.isClicked {

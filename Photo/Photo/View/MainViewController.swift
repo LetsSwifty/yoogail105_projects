@@ -10,7 +10,7 @@ import UIKit
 class MainViewController: UIViewController {
     
     let mainView = MainView()
-    
+    let viewModel = MainViewModel()
     override func loadView() {
         self.view = mainView
     }
@@ -19,6 +19,7 @@ class MainViewController: UIViewController {
         super.viewDidLoad()
         setupNavigationBar()
         setupCollectionView()
+        viewModel.searchPhoto(keyword: "green")
     }
     
     func setupNavigationBar() {
